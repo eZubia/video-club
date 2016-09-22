@@ -28,12 +28,18 @@ Que vienen siendo el prestamo al socio, que en si es la acción principal del si
 <h4>Diagrama Entidad-Relacion</h4>
 Se encontraron un total de 7 entidades principales para el funcionamiento de los procesos.
 
-> **Director**
-> **Socio**
-> **Película**
-> **Ficha**
-> **Cintas**
-> **Actor**
-> **Cinta**
+- **Director**
+- **Socio**
+- **Película**
+- **Ficha**
+- **Cintas**
+- **Actor**
+- **Cinta**
 
 ![diagramaer](https://cloud.githubusercontent.com/assets/10780058/18737317/ff7fac2e-804c-11e6-99c2-6c090705ae1a.png)
+
+<h4>Diagrama de Clases</h4>
+En base a las entidades anteriores se formo el siguiente diagrama de clases, implementado para el lenguaje de Java.
+
+![diagramaclases](https://cloud.githubusercontent.com/assets/10780058/18737512/8ce65eb2-804f-11e6-823f-1ee5d7baa48f.png)
+

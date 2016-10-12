@@ -63,12 +63,10 @@ public class VideoDaoJDBC implements VideoDao{
             PreparedStatement ps = null;
             switch (crud) {
                 case CREATE:
-                    //insert into tabla (campo1,campo2) values (valores)
                     ps = Conexion.getInstance().getCon().prepareStatement(Director.INSERT_DIRECTOR);
                     ps.setString(1, director.getNombre());
                     break;
                 case UPDATE:
-                    //UPDATE TABLE SET(cmpo1 = ?)
                     ps = Conexion.getInstance().getCon().prepareStatement(Director.UPDATE_DIRECTOR);
                     ps.setString(1, director.getNombre());
                     ps.setInt(2, director.getId());

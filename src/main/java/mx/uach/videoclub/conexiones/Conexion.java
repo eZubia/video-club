@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class Conexion {
 
     private static final String USUARIO = "root";
-    private static final String PASSWORD = "miserable33";
+    private static final String PASSWORD = "Miserable33!)(";
     private static final String CONEXION = "jdbc:mysql://localhost:3306/video_club?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 ;
     private static Conexion INSTANCE;

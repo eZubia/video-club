@@ -18,13 +18,7 @@ import mx.uach.videoclub.modelos.Socio;
  * @version 1.0
  */
 public interface VideoDao {
-    
-    /**
-     * Realiza la busqueda de un {@code Director} por su identificador unico.
-     * 
-     * @param id {@code Integer} identificador unico de la base de datos
-     * @return {@code Director} encontrado
-     */ 
+     
     public Director getDirectorById(Integer id);
     
     public List<Director> getDirectoresByCriteria(String criterio);

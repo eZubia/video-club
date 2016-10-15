@@ -23,28 +23,32 @@ public class Model {
     private Integer id;
 
     /**
-     * 
+     * Constructor vacío.
      */
     public Model() {
     }
 
+    /**
+     * Constructor con los parámetros necesarios.
+     * 
+     * @param id  {@code Integer} identificador del objeto
+     */
     public Model(Integer id) {
         this.id = id;
     }
-    
-    
 
     /**
+     * Consigue el identificador del objeto.
      * 
-     * @return 
      */
     public Integer getId() {
         return id;
     }
 
     /**
+     * Asigna un identificador al objeto.
      * 
-     * @param id 
+     * @param id {@code Integer} identificador del objeto 
      */
     public void setId(Integer id) {
         this.id = id;
@@ -71,6 +75,15 @@ public class Model {
         return campos.substring(1);
     };
     
+    /**
+     * Crea un {@code String} de ? separados por comas, igual a la cantidad
+     * de campos que tiene el modelo.
+     * 
+     * @param fields {@code String} arreglo con los nombres de los campos del 
+     * {@code Model}
+     * @param noId {@code Boolean} si requiere o no el id dentro del {@code String}
+     * @return {@code String} ?,?,?,....,?
+     */
     public static String paramsToStatement(String[] fields, Boolean noId){
         String campos = "";
         List<String> fieldsList = Arrays.asList(fields);
@@ -85,6 +98,15 @@ public class Model {
         return campos.substring(1);
     }
     
+    /**
+     * Crea un {@code String} del nombrecampo = ? separados por comas, igual a la cantidad
+     * de campos que tiene el modelo.
+     * 
+     * @param fields {@code String} arreglo con los nombres de los campos del 
+     * {@code Model}
+     * @param noId {@code Boolean} si requiere o no el id dentro del {@code String}
+     * @return {@code String} nombre = ?,nombre = ?,...,nombre = ?
+     */
     public static String paramsToStatementToCreate(String[] fields, Boolean noId){
         String campos = "";
         List<String> fieldsList = Arrays.asList(fields);

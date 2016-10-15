@@ -27,6 +27,10 @@ public class DaoJdbcJUnitTest {
     public DaoJdbcJUnitTest() {
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Director}.
+     */
     @Test
     public void testDirector(){
         VideoDao dao = new VideoDaoJDBC();
@@ -51,6 +55,10 @@ public class DaoJdbcJUnitTest {
         
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Actor}.
+     */
     @Test
     public void testActor(){
         VideoDao dao = new VideoDaoJDBC();
@@ -76,6 +84,10 @@ public class DaoJdbcJUnitTest {
         
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Cinta}.
+     */
     @Test
     public void testCinta(){
         VideoDao dao = new VideoDaoJDBC();
@@ -102,6 +114,10 @@ public class DaoJdbcJUnitTest {
         
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Ficha}.
+     */
     @Test
     public void testFicha(){
         VideoDao dao = new VideoDaoJDBC();
@@ -128,6 +144,10 @@ public class DaoJdbcJUnitTest {
         assertTrue(fichas.isEmpty());    
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Lista}.
+     */
     @Test
     public void testLista(){
         VideoDao dao = new VideoDaoJDBC();
@@ -155,6 +175,10 @@ public class DaoJdbcJUnitTest {
         assertTrue(listas.isEmpty());    
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Pelicula}.
+     */
     @Test
     public void testPelicula(){
         VideoDao dao = new VideoDaoJDBC();
@@ -180,6 +204,10 @@ public class DaoJdbcJUnitTest {
         assertTrue(peliculas.isEmpty());    
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Prestamo}.
+     */
     @Test
     public void testPrestamo(){
         VideoDao dao = new VideoDaoJDBC();
@@ -207,6 +235,10 @@ public class DaoJdbcJUnitTest {
         assertTrue(prestamos.isEmpty());    
     }
     
+    /**
+     * Pruebas unitarias de creación, actualización, busqueda y borrado de 
+     * {@code Socio}.
+     */
     @Test
     public void testSocio(){
         VideoDao dao = new VideoDaoJDBC();

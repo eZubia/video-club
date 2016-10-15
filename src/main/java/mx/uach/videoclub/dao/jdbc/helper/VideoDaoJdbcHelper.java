@@ -23,16 +23,40 @@ import mx.uach.videoclub.modelos.enums.EGenero;
  */
 public class VideoDaoJdbcHelper {
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Director}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Director} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Director makeDirector(ResultSet rs) throws SQLException{
         Director obj = new Director(rs.getInt(Director.FIELDS[0]), rs.getString(Director.FIELDS[1]));
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Actor}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Actor} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Actor makeActor(ResultSet rs) throws SQLException{
         Actor obj = new Actor(rs.getString(Actor.FIELDS[1]), rs.getString(Actor.FIELDS[2]), rs.getInt(Actor.FIELDS[0]));
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Cinta}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Cinta} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Cinta makeCinta(ResultSet rs) throws SQLException{
         Pelicula pelicula;
         VideoDao dao = new VideoDaoJDBC();
@@ -41,6 +65,14 @@ public class VideoDaoJdbcHelper {
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Ficha}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Ficha} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Ficha makeFicha(ResultSet rs) throws SQLException{
         Socio socio;
         VideoDao dao = new VideoDaoJDBC();
@@ -49,6 +81,14 @@ public class VideoDaoJdbcHelper {
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Lista}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Lista} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Lista makeLista(ResultSet rs) throws SQLException{
         VideoDao dao = new VideoDaoJDBC();
         Socio socio = dao.getSocioById(rs.getInt(Lista.FIELDS[2]));
@@ -57,6 +97,14 @@ public class VideoDaoJdbcHelper {
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Pelicula}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Pelicula} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Pelicula makePelicula(ResultSet rs) throws SQLException{
         VideoDao dao = new VideoDaoJDBC();
         Director director = dao.getDirectorById(rs.getInt(Pelicula.FIELDS[4]));
@@ -64,6 +112,14 @@ public class VideoDaoJdbcHelper {
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Prestamo}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Prestamo} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Prestamo makePrestamo(ResultSet rs) throws SQLException{
         VideoDao dao = new VideoDaoJDBC();
         Ficha ficha = dao.getFichaById(rs.getInt(Prestamo.FIELDS[2]));
@@ -72,6 +128,14 @@ public class VideoDaoJdbcHelper {
         return obj;
     }
     
+    /**
+     * Realiza un mapeo de un {@code ResultSet} a un objeto {@code Socio}.
+     * 
+     * @param rs {@code ResultSet} a convertir
+     * @return {@code Socio} con los parámetros conseguidos por la búsqueda
+     * @throws SQLException en caso de que no consida el tipo del campo cuando 
+     * lo pedimos
+     */
     public final static Socio makeSocio(ResultSet rs) throws SQLException{
         Socio obj = new Socio(rs.getString(Socio.FIELDS[1]), rs.getString(Socio.FIELDS[2]), rs.getString(Socio.FIELDS[3]), rs.getInt(Socio.FIELDS[0]));
         return obj;

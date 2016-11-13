@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Modelo general de todo el sistema.
@@ -16,7 +17,7 @@ import javax.persistence.Id;
  * @author Erik David Zubia Hernández
  * @version 1.0
  */
-@Entity
+@MappedSuperclass
 public abstract class Model implements Serializable {
     
     public static final String Q_WHERE_ID = "WHERE id = ";

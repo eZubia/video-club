@@ -1,5 +1,6 @@
 package mx.uach.videoclub.modelos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import mx.uach.videoclub.modelos.genericos.Model;
@@ -23,6 +24,7 @@ public class Cinta extends Model {
     public static final String UPDATE_CINTA = String.format("%s %s SET %s WHERE %s = ?", Model.UPDATE, TABLA, paramsToStatementToCreate(FIELDS, Boolean.TRUE), ID);
     public static final String DELETE_CINTA = String.format("%s %s %s ?", Model.DELETE, TABLA, Model.Q_WHERE_ID);
     
+    @Column(name = "numero_cinta")
     private Integer numeroCinta;
     @ManyToOne
     private Pelicula pelicula;

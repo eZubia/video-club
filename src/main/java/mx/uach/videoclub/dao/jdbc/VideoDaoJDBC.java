@@ -35,11 +35,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar un {@code Director}.
      * 
-     * @param id {@code Integer} identificador único del {@code Director}
+     * @param id {@code Long} identificador único del {@code Director}
      * @return {@code Director} mapeado con el resultado del búsqueda
      */
     @Override
-    public Director getDirectorById(Integer id) {
+    public Director getDirectorById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -100,11 +100,11 @@ public class VideoDaoJDBC implements VideoDao{
                 case UPDATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Director.UPDATE_DIRECTOR);
                     ps.setString(1, director.getNombre());
-                    ps.setInt(2, director.getId());
+                    ps.setLong(2, director.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Director.DELETE_DIRECTOR);
-                    ps.setInt(1, director.getId());
+                    ps.setLong(1, director.getId());
                     break;
                 default:
                     break;
@@ -121,11 +121,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar un {@code Actor}.
      * 
-     * @param id {@code Integer} identificador único del {@code Actor}
+     * @param id {@code Long} identificador único del {@code Actor}
      * @return {@code Actor} mapeado con el resultado del búsqueda
      */
     @Override
-    public Actor getActorById(Integer id) {
+    public Actor getActorById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -188,11 +188,11 @@ public class VideoDaoJDBC implements VideoDao{
                     ps = Conexion.getInstance().getCon().prepareStatement(Actor.UPDATE_ACTOR);
                     ps.setString(1, actor.getNombre());
                     ps.setString(2, actor.getNombre());
-                    ps.setInt(3, actor.getId());
+                    ps.setLong(3, actor.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Actor.DELETE_ACTOR);
-                    ps.setInt(1, actor.getId());
+                    ps.setLong(1, actor.getId());
                     break;
                 default:
                     break;
@@ -201,6 +201,7 @@ public class VideoDaoJDBC implements VideoDao{
             ps.execute();
         } catch (SQLException ex) {
             System.out.println("" + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -208,11 +209,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar una {@code Cinta}.
      * 
-     * @param id {@code Integer} identificador único de la {@code Cinta}
+     * @param id {@code Long} identificador único de la {@code Cinta}
      * @return {@code Cinta} mapeada con el resultado del búsqueda
      */
     @Override
-    public Cinta getCintaById(Integer id) {
+    public Cinta getCintaById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -268,18 +269,18 @@ public class VideoDaoJDBC implements VideoDao{
             switch (crud) {
                 case CREATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Cinta.INSERT_CINTA);
-                    ps.setInt(1, cinta.getNumeroCinta());
-                    ps.setInt(2, cinta.getPelicula().getId());
+                    ps.setLong(1, cinta.getNumeroCinta());
+                    ps.setLong(2, cinta.getPelicula().getId());
                     break;
                 case UPDATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Cinta.UPDATE_CINTA);
-                    ps.setInt(1, cinta.getNumeroCinta());
-                    ps.setInt(2, cinta.getPelicula().getId());
-                    ps.setInt(3, cinta.getId());
+                    ps.setLong(1, cinta.getNumeroCinta());
+                    ps.setLong(2, cinta.getPelicula().getId());
+                    ps.setLong(3, cinta.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Cinta.DELETE_CINTA);
-                    ps.setInt(1, cinta.getId());
+                    ps.setLong(1, cinta.getId());
                     break;
                 default:
                     break;
@@ -295,11 +296,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar una {@code Ficha}.
      * 
-     * @param id {@code Integer} identificador único de la {@code Ficha}
+     * @param id {@code Long} identificador único de la {@code Ficha}
      * @return {@code Ficha} mapeada con el resultado del búsqueda
      */
     @Override
-    public Ficha getFichaById(Integer id) {
+    public Ficha getFichaById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -356,17 +357,17 @@ public class VideoDaoJDBC implements VideoDao{
                 case CREATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Ficha.INSERT_FICHA);
                     ps.setDate(1, new java.sql.Date(ficha.getFechaPrestamo().getTime()));
-                    ps.setInt(2, ficha.getSocio().getId());
+                    ps.setLong(2, ficha.getSocio().getId());
                     break;
                 case UPDATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Ficha.UPDATE_FICHA);
                     ps.setDate(1, new java.sql.Date(ficha.getFechaPrestamo().getTime()));
-                    ps.setInt(2, ficha.getSocio().getId());
-                    ps.setInt(3, ficha.getId());
+                    ps.setLong(2, ficha.getSocio().getId());
+                    ps.setLong(3, ficha.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Ficha.DELETE_FICHA);
-                    ps.setInt(1, ficha.getId());
+                    ps.setLong(1, ficha.getId());
                     break;
                 default:
                     break;
@@ -382,11 +383,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar una {@code Lista}.
      * 
-     * @param id {@code Integer} identificador único de la {@code Lista}
+     * @param id {@code Long} identificador único de la {@code Lista}
      * @return {@code Lista} mapeada con el resultado del búsqueda
      */
     @Override
-    public Lista getListaById(Integer id) {
+    public Lista getListaById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -442,24 +443,24 @@ public class VideoDaoJDBC implements VideoDao{
             switch (crud) {
                 case CREATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Lista.INSERT_LISTA);
-                    ps.setInt(1, lista.getPelicula().getId());
-                    ps.setInt(2, lista.getSocio().getId());
+                    ps.setLong(1, lista.getPelicula().getId());
+                    ps.setLong(2, lista.getSocio().getId());
                     ps.setDate(3, new java.sql.Date(lista.getFecha().getTime()));
                     ps.setDate(4, new java.sql.Date(lista.getHora().getTime()));
                     ps.setBoolean(5, lista.getEstatus());
                     break;
                 case UPDATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Lista.UPDATE_LISTA);
-                    ps.setInt(1, lista.getPelicula().getId());
-                    ps.setInt(2, lista.getSocio().getId());
+                    ps.setLong(1, lista.getPelicula().getId());
+                    ps.setLong(2, lista.getSocio().getId());
                     ps.setDate(3, new java.sql.Date(lista.getFecha().getTime()));
                     ps.setDate(4, new java.sql.Date(lista.getHora().getTime()));
                     ps.setBoolean(5, lista.getEstatus());
-                    ps.setInt(6, lista.getId());
+                    ps.setLong(6, lista.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Lista.DELETE_LISTA);
-                    ps.setInt(1, lista.getId());
+                    ps.setLong(1, lista.getId());
                     break;
                 default:
                     break;
@@ -475,11 +476,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar una {@code Pelicula}.
      * 
-     * @param id {@code Integer} identificador único de la {@code Pelicula}
+     * @param id {@code Long} identificador único de la {@code Pelicula}
      * @return {@code Pelicula} mapeada con el resultado del búsqueda
      */
     @Override
-    public Pelicula getPeliculaById(Integer id) {
+    public Pelicula getPeliculaById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -537,20 +538,20 @@ public class VideoDaoJDBC implements VideoDao{
                     ps = Conexion.getInstance().getCon().prepareStatement(Pelicula.INSERT_PELICULA);
                     ps.setString(1, pelicula.getTitulo());
                     ps.setString(2, pelicula.getGenero().toString());
-                    ps.setInt(3, pelicula.getDuracion());
-                    ps.setInt(4, pelicula.getDirector().getId());
+                    ps.setLong(3, pelicula.getDuracion());
+                    ps.setLong(4, pelicula.getDirector().getId());
                     break;
                 case UPDATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Pelicula.UPDATE_PELICULA);
                     ps.setString(1, pelicula.getTitulo());
                     ps.setString(2, pelicula.getGenero().toString());
-                    ps.setInt(3, pelicula.getDuracion());
-                    ps.setInt(4, pelicula.getDirector().getId());
-                    ps.setInt(5, pelicula.getId());
+                    ps.setLong(3, pelicula.getDuracion());
+                    ps.setLong(4, pelicula.getDirector().getId());
+                    ps.setLong(5, pelicula.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Pelicula.DELETE_PELICULA);
-                    ps.setInt(1, pelicula.getId());
+                    ps.setLong(1, pelicula.getId());
                     break;
                 default:
                     break;
@@ -566,11 +567,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar un {@code Prestamo}.
      * 
-     * @param id {@code Integer} identificador único del {@code Prestamo}
+     * @param id {@code Long} identificador único del {@code Prestamo}
      * @return {@code Prestamo} mapeado con el resultado del búsqueda
      */
     @Override
-    public Prestamo getPrestamoById(Integer id) {
+    public Prestamo getPrestamoById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -626,22 +627,22 @@ public class VideoDaoJDBC implements VideoDao{
             switch (crud) {
                 case CREATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Prestamo.INSERT_PRESTAMO);
-                    ps.setInt(1, prestamo.getCinta().getId());
-                    ps.setInt(2, prestamo.getFicha().getId());
+                    ps.setLong(1, prestamo.getCinta().getId());
+                    ps.setLong(2, prestamo.getFicha().getId());
                     ps.setDate(3, new java.sql.Date(prestamo.getFechaEntrega().getTime()));
                     ps.setString(4, prestamo.getEstatus().toString());
                     break;
                 case UPDATE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Prestamo.UPDATE_PRESTAMO);
-                    ps.setInt(1, prestamo.getCinta().getId());
-                    ps.setInt(2, prestamo.getFicha().getId());
+                    ps.setLong(1, prestamo.getCinta().getId());
+                    ps.setLong(2, prestamo.getFicha().getId());
                     ps.setDate(3, new java.sql.Date(prestamo.getFechaEntrega().getTime()));
                     ps.setString(4, prestamo.getEstatus().toString());
-                    ps.setInt(5, prestamo.getId());
+                    ps.setLong(5, prestamo.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Prestamo.DELETE_PRESTAMO);
-                    ps.setInt(1, prestamo.getId());
+                    ps.setLong(1, prestamo.getId());
                     break;
                 default:
                     break;
@@ -657,11 +658,11 @@ public class VideoDaoJDBC implements VideoDao{
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
      * para encontrar un {@code Socio}.
      * 
-     * @param id {@code Integer} identificador único del {@code Socio}
+     * @param id {@code Long} identificador único del {@code Socio}
      * @return {@code Socio} mapeado con el resultado del búsqueda
      */
     @Override
-    public Socio getSocioById(Integer id) {
+    public Socio getSocioById(Long id) {
         try {
             ResultSet rs;
             Statement st = Conexion.getInstance().getCon().createStatement();
@@ -719,11 +720,11 @@ public class VideoDaoJDBC implements VideoDao{
                     ps.setString(1, socio.getNombre());
                     ps.setString(2, socio.getDireccion());
                     ps.setString(3, socio.getTelefono());
-                    ps.setInt(4, socio.getId());
+                    ps.setLong(4, socio.getId());
                     break;
                 case DELETE:
                     ps = Conexion.getInstance().getCon().prepareStatement(Socio.DELETE_SOCIO);
-                    ps.setInt(1, socio.getId());
+                    ps.setLong(1, socio.getId());
                     break;
                 default:
                     break;

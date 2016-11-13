@@ -1,6 +1,8 @@
 package mx.uach.videoclub.modelos;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import mx.uach.videoclub.modelos.genericos.Model;
 
 /**
@@ -9,11 +11,14 @@ import mx.uach.videoclub.modelos.genericos.Model;
  * @author Erik David Zubia Hernández
  * @version 1.0
  */
+@Entity
 public class Lista extends Model {
     
     public static final String TABLA = "listas";
+    public static final String TABLA_HIBERNATE = "Lista";
     public static final String[] FIELDS = {"id", "peliculas_id", "socios_id", "fecha", "hora", "estatus"};
     public static final String Q = String.format("SELECT %s FROM %s", fieldsToQuery(FIELDS, Boolean.FALSE), TABLA);
+    public static final String Q_HIBERNATE = String.format("SELECT a FROM %s",  TABLA_HIBERNATE);
     public static final String INSERT_LISTA = String.format("%s %s (%s) VALUES (%s)", 
             Model.INSERT, TABLA, fieldsToQuery(FIELDS, Boolean.TRUE), paramsToStatement(FIELDS, Boolean.TRUE) );
     public static final String UPDATE_LISTA = String.format("%s %s SET %s WHERE %s = ?", Model.UPDATE, TABLA, paramsToStatementToCreate(FIELDS, Boolean.TRUE), ID);
@@ -22,7 +27,9 @@ public class Lista extends Model {
     private Date fecha;
     private Date hora;
     private Boolean estatus;
+    @ManyToOne
     private Socio socio;
+    @ManyToOne
     private Pelicula pelicula;
 
     /**
@@ -59,7 +66,7 @@ public class Lista extends Model {
      * @param socio {@code Socio} que realizó el apartado
      * @param pelicula {@code Pelicula} que aparto el {@code Socio}
      */
-    public Lista(Date fecha, Date hora, Boolean estatus, Socio socio, Pelicula pelicula, Integer id) {
+    public Lista(Date fecha, Date hora, Boolean estatus, Socio socio, Pelicula pelicula, Long id) {
         super(id);
         this.fecha = fecha;
         this.hora = hora;

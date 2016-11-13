@@ -19,49 +19,49 @@ import mx.uach.videoclub.modelos.Socio;
  */
 public interface VideoDao {
      
-    public Director getDirectorById(Integer id);
+    public Director getDirectorById(Long id);
     
     public List<Director> getDirectoresByCriteria(String criterio);
     
     public void direactorProcces(Director director, CRUD crud);
     
-    public Actor getActorById(Integer id);
+    public Actor getActorById(Long id);
     
     public List<Actor> getActoresByCriteria(String criterio);
     
     public void actorProcces(Actor actor, CRUD crud);
     
-    public Cinta getCintaById(Integer id);
+    public Cinta getCintaById(Long id);
     
     public List<Cinta> getCintasByCriteria(String criterio);
     
     public void cintaProcces(Cinta cinta, CRUD crud);
     
-    public Ficha getFichaById(Integer id);
+    public Ficha getFichaById(Long id);
     
     public List<Ficha> getFichasByCriteria(String criterio);
     
     public void fichaProcces(Ficha ficha, CRUD crud);
     
-    public Lista getListaById(Integer id);
+    public Lista getListaById(Long id);
     
     public List<Lista> getListasByCriteria(String criterio);
     
     public void listaProcces(Lista lista, CRUD crud);
     
-    public Pelicula getPeliculaById(Integer id);
+    public Pelicula getPeliculaById(Long id);
     
     public List<Pelicula> getPeliculaByCriteria(String criterio);
     
     public void peliculaProcces(Pelicula pelicula, CRUD crud);
     
-    public Prestamo getPrestamoById(Integer id);
+    public Prestamo getPrestamoById(Long id);
     
     public List<Prestamo> getPrestamosByCriteria(String criterio);
     
     public void prestamoProcces(Prestamo prestamo, CRUD crud);
     
-    public Socio getSocioById(Integer id);
+    public Socio getSocioById(Long id);
     
     public List<Socio> getSociosByCriteria(String criterio);
     

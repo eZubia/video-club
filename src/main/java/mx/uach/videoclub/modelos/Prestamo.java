@@ -1,6 +1,8 @@
 package mx.uach.videoclub.modelos;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import mx.uach.videoclub.modelos.enums.EEstatusPrestamo;
 import mx.uach.videoclub.modelos.genericos.Model;
 
@@ -10,11 +12,14 @@ import mx.uach.videoclub.modelos.genericos.Model;
  * @author Erik David Zubia Hernández
  * @version 1.0
  */
+@Entity
 public class Prestamo extends Model {
     
     public static final String TABLA = "prestamos";
+    public static final String TABLA_HIBERNATE = "Prestamo";
     public static final String[] FIELDS = {"id", "cintas_id", "fichas_id", "fecha_entrega", "estatus"};
     public static final String Q = String.format("SELECT %s FROM %s", fieldsToQuery(FIELDS, Boolean.FALSE), TABLA);
+    public static final String Q_HIBERNATE = String.format("SELECT a FROM %s",  TABLA_HIBERNATE);
     public static final String INSERT_PRESTAMO = String.format("%s %s (%s) VALUES (%s)", 
             Model.INSERT, TABLA, fieldsToQuery(FIELDS, Boolean.TRUE), paramsToStatement(FIELDS, Boolean.TRUE) );
     public static final String UPDATE_PRESTAMO = String.format("%s %s SET %s WHERE %s = ?", Model.UPDATE, TABLA, paramsToStatementToCreate(FIELDS, Boolean.TRUE), ID);
@@ -22,7 +27,9 @@ public class Prestamo extends Model {
     
     private Date fechaEntrega;
     private EEstatusPrestamo estatus;
+    @ManyToOne
     private Ficha ficha;
+    @ManyToOne
     private Cinta cinta;
 
     /**
@@ -59,7 +66,7 @@ public class Prestamo extends Model {
      * @param id {@code Integer} identificador de la base de datos
      * 
      */
-    public Prestamo(Date fechaEntrega, EEstatusPrestamo estatus, Ficha ficha, Cinta cinta, Integer id) {
+    public Prestamo(Date fechaEntrega, EEstatusPrestamo estatus, Ficha ficha, Cinta cinta, Long id) {
         super(id);
         this.fechaEntrega = fechaEntrega;
         this.estatus = estatus;

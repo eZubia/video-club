@@ -1,5 +1,7 @@
 package mx.uach.videoclub.modelos;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import mx.uach.videoclub.modelos.enums.EGenero;
 import mx.uach.videoclub.modelos.genericos.Model;
 
@@ -9,11 +11,14 @@ import mx.uach.videoclub.modelos.genericos.Model;
  * @author Erik David Zubia Hernández
  * @version 1.0
  */
+@Entity
 public class Pelicula extends Model{
     
     public static final String TABLA = "peliculas";
+    public static final String TABLA_HIBERNATE = "Pelicula";
     public static final String[] FIELDS = {"id", "titulo", "genero", "duracion", "director_id"};
     public static final String Q = String.format("SELECT %s FROM %s", fieldsToQuery(FIELDS, Boolean.FALSE), TABLA);
+    public static final String Q_HIBERNATE = String.format("SELECT a FROM %s",  TABLA_HIBERNATE);
     public static final String INSERT_PELICULA = String.format("%s %s (%s) VALUES (%s)", 
             Model.INSERT, TABLA, fieldsToQuery(FIELDS, Boolean.TRUE), paramsToStatement(FIELDS, Boolean.TRUE) );
     public static final String UPDATE_PELICULA = String.format("%s %s SET %s WHERE %s = ?", Model.UPDATE, TABLA, paramsToStatementToCreate(FIELDS, Boolean.TRUE), ID);
@@ -22,6 +27,7 @@ public class Pelicula extends Model{
     private String titulo;
     private EGenero genero;
     private Integer duracion;
+    @ManyToOne
     private Director director;
 
     /**
@@ -57,7 +63,7 @@ public class Pelicula extends Model{
      * @param director {@code Director} director de la película
      * @param id {@code Integer} identificador único
      */
-    public Pelicula(String titulo, EGenero genero, Integer duracion, Director director, Integer id) {
+    public Pelicula(String titulo, EGenero genero, Integer duracion, Director director, Long id) {
         super(id);
         this.titulo = titulo;
         this.genero = genero;

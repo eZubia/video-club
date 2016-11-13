@@ -1,9 +1,14 @@
 package mx.uach.videoclub.modelos.genericos;
 
 import com.google.common.base.CaseFormat;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Modelo general de todo el sistema.
@@ -11,7 +16,8 @@ import java.util.stream.Collectors;
  * @author Erik David Zubia Hernández
  * @version 1.0
  */
-public class Model {
+@Entity
+public abstract class Model implements Serializable {
     
     public static final String Q_WHERE_ID = "WHERE id = ";
     public static final String Q_WHERE = "WHERE";
@@ -19,8 +25,12 @@ public class Model {
     public static final String UPDATE = "UPDATE";
     public static final String DELETE = "DELETE FROM";
     public static final String ID = "id";
+    public static final String ID_HIBERNATE = ":id";
+    public static final String HIBERNATE = "SELECT a FROM %s a";
     
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
 
     /**
      * Constructor vacío.
@@ -33,7 +43,7 @@ public class Model {
      * 
      * @param id  {@code Integer} identificador del objeto
      */
-    public Model(Integer id) {
+    public Model(Long id) {
         this.id = id;
     }
 
@@ -41,7 +51,7 @@ public class Model {
      * Consigue el identificador del objeto.
      * 
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -50,7 +60,7 @@ public class Model {
      * 
      * @param id {@code Integer} identificador del objeto 
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     
@@ -160,6 +170,6 @@ public class Model {
     public static String capitalize(final String line) {
         return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
-
+    
     
 }

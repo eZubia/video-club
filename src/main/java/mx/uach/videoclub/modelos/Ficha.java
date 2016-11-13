@@ -1,6 +1,8 @@
 package mx.uach.videoclub.modelos;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import mx.uach.videoclub.modelos.genericos.Model;
 
 /**
@@ -9,17 +11,21 @@ import mx.uach.videoclub.modelos.genericos.Model;
  * @author Erik David Zubia Hernández
  * @version 1.0
  */
+@Entity
 public class Ficha extends Model {
     
     public static final String TABLA = "fichas";
+    public static final String TABLA_HIBERNATE = "Ficha";
     public static final String[] FIELDS = {"id", "fecha_prestamo", "socios_id"};
     public static final String Q = String.format("SELECT %s FROM %s", fieldsToQuery(FIELDS, Boolean.FALSE), TABLA);
+    public static final String Q_HIBERNATE = String.format("SELECT a FROM %s",  TABLA_HIBERNATE);
     public static final String INSERT_FICHA = String.format("%s %s (%s) VALUES (%s)", 
             Model.INSERT, TABLA, fieldsToQuery(FIELDS, Boolean.TRUE), paramsToStatement(FIELDS, Boolean.TRUE) );
     public static final String UPDATE_FICHA = String.format("%s %s SET %s WHERE %s = ?", Model.UPDATE, TABLA, paramsToStatementToCreate(FIELDS, Boolean.TRUE), ID);
     public static final String DELETE_FICHA = String.format("%s %s %s ?", Model.DELETE, TABLA, Model.Q_WHERE_ID);
     
     private Date fechaPrestamo;
+    @ManyToOne
     private Socio socio;
 
     /**
@@ -49,7 +55,7 @@ public class Ficha extends Model {
      * @param socio {@code Socio} al que se le realizó el prestamo
      * @param id {@code Integer} identificador único
      */
-    public Ficha(Date fechaPrestamo, Socio socio, Integer id) {
+    public Ficha(Date fechaPrestamo, Socio socio, Long id) {
         super(id);
         this.fechaPrestamo = fechaPrestamo;
         this.socio = socio;

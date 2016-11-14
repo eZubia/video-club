@@ -29,7 +29,7 @@ public class VideoHibernate<T extends Model> {
     
     /**
      * Realiza una búsqueda dentro de la base de datos por medio de un identificador
-     * para encontrar un {@code Director}.
+     * para encontrar un {@code Entity}.
      * 
      * @param id {@code Long} identificador único del {@code Director}
      * @return {@code Director} mapeado con el resultado del búsqueda
@@ -43,7 +43,7 @@ public class VideoHibernate<T extends Model> {
 
     /**
      * Realiza una búsqueda a la base de datos, basado en un criterio mandado
-     * para conseguir una {@code List} de {@code Director}.
+     * para conseguir una {@code List} de {@code Entity}.
      * 
      * @param criterio {@code String} criterio de búsqueda
      * @return {@code List} de {@code Director} que coincidieron con el criterio
@@ -56,22 +56,22 @@ public class VideoHibernate<T extends Model> {
     }
 
     /**
-     * Realiza según la opción mandada, la creación de un nuevo {@code Director},
-     * la actualización de un {@code Director} encontrado o su eliminación.
+     * Realiza según la opción mandada, la creación de una nueva {@code Entity},
+     * la actualización de una {@code Entity} encontrado o su eliminación.
      * 
-     * @param director {@code Director} para cual se realizara la operación
+     * @param entity {@code Entity} para cual se realizara la operación
      * @param crud {@code CRUD} tipo de operación a realizar
      */
-    public void entityProcces(T director, CRUD crud) {
+    public void entityProcces(T entity, CRUD crud) {
         EntityManager em = VideoEntityManager.getINSTANCE().getEm();
         em.getTransaction().begin();
         switch (crud) {
             case CREATE:
             case UPDATE:
-                em.persist(director);
+                em.persist(entity);
                 break;
             case DELETE:
-                em.remove(director);
+                em.remove(entity);
                 break;
             default:
                 break;

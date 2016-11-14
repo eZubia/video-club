@@ -27,7 +27,7 @@ import org.junit.Test;
  * 
  * @author Erik David Zubia Hernández
  */
-public class DaoJdbcJUnitTest {
+public class EntitysJUnitTest {
     
     private Pelicula pelicula;
     private Director director;
@@ -39,9 +39,12 @@ public class DaoJdbcJUnitTest {
     
     public static HashMap<String, Long> RESULTS = new HashMap<>();
     
-    public DaoJdbcJUnitTest() {
+    public EntitysJUnitTest() {
     }
     
+    /**
+     * Operaciones a realizar antes de las pruebas.
+     */
     @Before 
     public void initialize() {
         VideoDao dao = new VideoDaoJDBC();
@@ -55,6 +58,9 @@ public class DaoJdbcJUnitTest {
         
     }
     
+    /**
+     * Operaciones a realizar después de las pruebas.
+     */
     @After
     public void finish() {
         System.out.println("====================================================");
